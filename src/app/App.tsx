@@ -1,13 +1,17 @@
 import * as React from "react";
 // import styles from "./app.module.scss";
 
-import nc1 from "./../images/nc1.jpg";
-import nc2 from "./../images/nc2.jpg";
-import nc3 from "./../images/nc3.jpg";
-import nc4 from "./../images/nc4.jpg";
-import nc5 from "./../images/nc5.jpg";
+// Import short videos
+import nc1mp4 from "./../short-clips/nc1.mp4";
 
-const cageImgArray = [nc1, nc2, nc3, nc4, nc5];
+// Import imgages
+import nc1img from "./../images/nc1.jpg";
+import nc2img from "./../images/nc2.jpg";
+import nc3img from "./../images/nc3.jpg";
+import nc4img from "./../images/nc4.jpg";
+import nc5img from "./../images/nc5.jpg";
+
+const cageImgArray = [nc1img, nc2img, nc3img, nc4img, nc5img];
 
 /////////////////////////
 ////// APPLICATION //////
@@ -49,7 +53,9 @@ const fetchImages = async () => {
 const App = ({}) => {
   return (
     <div>
-      <h1>Hello Stats!</h1>
+      <video autoPlay loop width="400" height="300">
+        <source src={nc1mp4} type="video/mp4" />
+      </video>
       <button
         onClick={() => {
           fetchImages();
