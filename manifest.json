@@ -1,0 +1,7 @@
+{
+  "name": "Nicolas Cage Replacer",
+  "id": "953318991680776075",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
