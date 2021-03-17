@@ -25,13 +25,13 @@ const cageImgArray = [
 const videoClipsArray = [
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc1.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc2.mp4",
+  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc1.mp4",
+  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc2.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc3.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc4.mp4",
-  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc5.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc6.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc7.mp4",
-  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc8.mp4",
-  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc9.mp4"
+  "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc8.mp4"
 ];
 
 /////////////////////////
@@ -86,7 +86,7 @@ const App = ({}) => {
     <div className={styles.app}>
       <section className={styles.ui} onDoubleClick={changeTheVideo}>
         <button
-          className={styles.button}
+          className={styles.regularButton}
           onClick={() => {
             fetchImages();
           }}
@@ -94,7 +94,7 @@ const App = ({}) => {
           <span> Cage on the page!</span>
         </button>
         <button
-          className={styles.button}
+          className={styles.secondaryButton}
           onClick={() => {
             parent.postMessage({ pluginMessage: { type: "removeGage!" } }, "*");
           }}

@@ -2,8 +2,9 @@
 // Please do not change this file!
 interface CssExports {
   'app': string;
-  'button': string;
   'gradAnim': string;
+  'regularButton': string;
+  'secondaryButton': string;
   'ui': string;
   'video': string;
 }

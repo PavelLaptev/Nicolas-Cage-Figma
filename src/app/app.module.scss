@@ -34,12 +34,13 @@
   transform: translateX(-50%);
 }
 
-.button {
-  height: 42px;
+@mixin button-mixin() {
+  height: 44px;
   margin-top: 8px;
   border: none;
   outline: none;
-  transition: all 0.1s ease;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
 
   span {
     font-size: 15px;
@@ -47,6 +48,33 @@
     font-weight: 900;
     font-family: "Inter", sans-serif;
     //
+
+    background-clip: text;
+    background-position-x: 0;
+    -webkit-background-clip: text;
+
+    animation-play-state: paused;
+    //
+  }
+
+  &:hover {
+    height: 56px;
+    span {
+      animation-play-state: running;
+    }
+
+    ~ button {
+      height: 36px;
+    }
+  }
+}
+
+.regularButton {
+  @include button-mixin();
+  background-color: white;
+
+  span {
+    color: black;
     background-image: linear-gradient(
       -45deg,
       rgba(255, 0, 0, 1) 0%,
@@ -54,20 +82,24 @@
       rgba(0, 164, 255, 1) 65%,
       rgba(252, 69, 69, 1) 100%
     );
-    background-clip: text;
-    background-position-x: 0;
-    -webkit-background-clip: text;
     animation: gradAnim 1.2s infinite linear;
-    animation-play-state: paused;
-    //
+  }
+  &:hover {
+    span {
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+.secondaryButton {
+  @include button-mixin();
+  background-color: black;
+  span {
+    color: white;
   }
 
   &:hover {
-    // transform: scale(0.99);
-    span {
-      -webkit-text-fill-color: transparent;
-      animation-play-state: running;
-    }
+    border: 2px solid rgba(255, 255, 255, 1);
   }
 }
 
