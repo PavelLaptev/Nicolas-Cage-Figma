@@ -16,13 +16,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// *::selection {
-//   color: var(--white-clr);
-//   background-color: var(--dark-clr);
-// }
-
 body {
   font-family: "Inter", sans-serif;
   font-size: 12px;
   margin: 0;
+  user-select: none;
 }

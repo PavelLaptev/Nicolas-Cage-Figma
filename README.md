@@ -1,2 +1,3 @@
-# Nicolas-Cage-Figma
- Nicolas Cage Replacer for Figma
+# Nicolas-Cage-Image-Replacer-Figma
+
+Nicolas Cage Replacer for Figma
