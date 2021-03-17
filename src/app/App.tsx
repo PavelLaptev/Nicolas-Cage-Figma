@@ -10,6 +10,7 @@ import nc5img from "./../images/nc5.jpg";
 import nc6img from "./../images/nc6.jpg";
 import nc7img from "./../images/nc7.jpg";
 import nc8img from "./../images/nc8.jpg";
+import nc9img from "./../images/nc9.jpg";
 
 // Img and Video arrays
 const cageImgArray = [
@@ -20,7 +21,8 @@ const cageImgArray = [
   nc5img,
   nc6img,
   nc7img,
-  nc8img
+  nc8img,
+  nc9img
 ];
 const videoClipsArray = [
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc1.mp4",
