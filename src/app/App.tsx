@@ -13,6 +13,19 @@ import nc8img from "./../images/nc8.jpg";
 import nc9img from "./../images/nc9.jpg";
 
 // Img and Video arrays
+// const proxyServer = "https://secure-thicket-88117.herokuapp.com";
+// const cageImgArray = [
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc9.jpg?v=1616413200264",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc1.jpg?v=1616413200301",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc2.jpg?v=1616413200431",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc3.jpg?v=1616413200810",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc4.jpg?v=1616413200838",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc5.jpg?v=1616413200950",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc6.jpg?v=1616413201397",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc7.jpg?v=1616413201695",
+//   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc8.jpg?v=1616413201945"
+// ];
+
 const cageImgArray = [
   nc1img,
   nc2img,
@@ -24,6 +37,7 @@ const cageImgArray = [
   nc8img,
   nc9img
 ];
+
 const videoClipsArray = [
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc1.mp4",
   "https://cdn.glitch.com/604ccd24-6c39-4492-b5ee-72a22eb071c0%2Fnc2.mp4",
