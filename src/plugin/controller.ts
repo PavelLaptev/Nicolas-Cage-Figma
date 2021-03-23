@@ -9,31 +9,41 @@ figma.showUI(__html__, { width: 280, height: 350 });
 //////////////////////////// FOO ///////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+let pluginHashDataKey = `cageHashArray-${figma.currentPage.id}`;
+let pluginImgsDataKey = `cageImgsArray-${figma.currentPage.id}`;
+
+// RECONNECT PLUGIN DATA IF PAGE WAS CHANGED
+figma.on("currentpagechange", () => {
+  pluginHashDataKey = `cageHashArray-${figma.currentPage.id}`;
+  pluginImgsDataKey = `cageImgsArray-${figma.currentPage.id}`;
+});
+
 //
-const findByHash = (group, hash) => {
-  group.children.map(item => {
-    if (item.fills) {
-      if (item.fills.length > 0 && item.fills[0].type === "IMAGE") {
-        item.fills = item.fills.filter(fill => fill.imageHash !== hash);
-      }
-      if (item.children && item.children.length > 0) {
-        findByHash(item, hash);
-      }
-    }
+const findByHash = (imgsArray, hash) => {
+  imgsArray.map(item => {
+    return (item.fills = item.fills.filter(fill => fill.imageHash !== hash));
   });
 };
 
 //
-const removebyHash = group => {
+const removebyHash = () => {
   // get Hash Array and clean it from duplicates
-  let plugindataKey = `cageHashArray-${figma.currentPage.id}`;
-  let hashArray = figma.root.getPluginData(plugindataKey).split(",");
+  let imgsIdsArray = figma.root
+    .getPluginData(pluginImgsDataKey)
+    .split(",")
+    .map(id => {
+      return figma.currentPage.findOne(l => l.id === id);
+    })
+    .filter(Boolean);
+
+  let hashArray = figma.root.getPluginData(pluginHashDataKey).split(",");
 
   hashArray.map(hash => {
-    findByHash(group, hash);
+    findByHash(imgsIdsArray, hash);
   });
 
-  figma.root.setPluginData(plugindataKey, "");
+  figma.root.setPluginData(pluginImgsDataKey, "");
+  figma.root.setPluginData(pluginHashDataKey, "");
 };
 
 //
@@ -50,18 +60,28 @@ const addCageToImage = (img, imgArr) => {
   };
   img["fills"] = [...currentImageFills, ...[newFill]];
 
-  let plugindataKey = `cageHashArray-${figma.currentPage.id}`;
+  // HASH and IMGs IDs
+  let imgIdsArray = Array.from(
+    new Set(
+      figma.root
+        .getPluginData(pluginImgsDataKey)
+        .concat(`,${img.id}`)
+        .split(",")
+    )
+  ).toString();
 
   let hashArray = Array.from(
     new Set(
       figma.root
-        .getPluginData(plugindataKey)
+        .getPluginData(pluginHashDataKey)
         .concat(`,${newFill.imageHash}`)
         .split(",")
     )
   ).toString();
 
-  figma.root.setPluginData(plugindataKey, hashArray);
+  // Set to the plugin storage
+  figma.root.setPluginData(pluginImgsDataKey, imgIdsArray);
+  figma.root.setPluginData(pluginHashDataKey, hashArray);
 };
 
 //
@@ -90,6 +110,6 @@ figma.ui.onmessage = async msg => {
   }
 
   if (msg.type === "removeGage!") {
-    removebyHash(figma.currentPage);
+    removebyHash();
   }
 };
