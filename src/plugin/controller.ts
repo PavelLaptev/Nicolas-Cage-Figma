@@ -5,6 +5,15 @@
 // UI
 figma.showUI(__html__, { width: 280, height: 350 });
 
+// CAGE LINES
+const cageLines = [
+  "🐝 Not the Bees!",
+  "😈 Cage Rampage!",
+  "🦈 What's in the bag? A shark or something?",
+  "🤘 Sir, that was totally cool!",
+  "🙏 HALLELUJAH!"
+];
+
 ////////////////////////////////////////////////////////////////
 //////////////////////////// FOO ///////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -85,16 +94,20 @@ const addCageToImage = (img, imgArr) => {
 };
 
 //
+let isImageFrameFound = [false];
 const findImageByFill = (group, imgArray) => {
   group.children.forEach((item: any) => {
-    if (item.fills) {
-      if (item.fills.length > 0 && item.fills[0].type === "IMAGE") {
-        addCageToImage(item, imgArray);
-      }
+    let itemFills = JSON.stringify(item.fills);
 
-      if (item.children && item.children.length > 0) {
-        findImageByFill(item, imgArray);
+    if (typeof itemFills !== "undefined") {
+      if (JSON.stringify(item.fills).includes("IMAGE")) {
+        addCageToImage(item, imgArray);
+        isImageFrameFound.push(true);
       }
+    }
+
+    if (item.children && item.children.length > 0) {
+      findImageByFill(item, imgArray);
     }
   });
 };
@@ -107,6 +120,12 @@ figma.ui.onmessage = async msg => {
   // UPDATE ON BY ONE
   if (msg.type === "makeGage!") {
     findImageByFill(figma.currentPage, msg.data);
+
+    if (!isImageFrameFound.includes(true)) {
+      figma.notify("👽 No images found. Add an image");
+    } else {
+      figma.notify(cageLines[Math.floor(Math.random() * cageLines.length)]);
+    }
   }
 
   if (msg.type === "removeGage!") {
