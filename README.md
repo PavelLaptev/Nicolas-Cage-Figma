@@ -14,4 +14,6 @@ The plugin will take all frames or shapes with the image fill and add a Nicolas 
 
 - You can remove all cell images even if you closed the plugin. All images with hash IDs will be associated with the plugin until you delete them. Hash IDs will be created for each page where you run the plugin.
 
+## 📺 [Youtube Demo](https://youtu.be/LRYkoxEPe3w)
+
 ## 🕹 [Install Plugin](https://www.figma.com/community/plugin/953318991680776075/Nicolas-Cage-Image-Replacer)
